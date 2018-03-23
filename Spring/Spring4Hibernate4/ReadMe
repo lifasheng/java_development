@@ -1,0 +1,50 @@
+1. this project is from https://www.concretepage.com/spring-4/spring-4-hibernate-4-gradle-integration-example-using-annotation
+
+2. try to install mysql
+
+---------------------------------------
+brew install mysql
+
+vim /usr/local/etc/my.cnf
+
+$ cat /usr/local/etc/my.cnf
+# Default Homebrew MySQL server config
+[client]
+port = 3306
+socket = /tmp/mysql.sock
+default-character-set = utf8
+
+[mysqld]
+collation-server = utf8_unicode_ci
+character-set-server = utf8
+init-connect ='SET NAMES utf8'
+max_allowed_packet = 64M
+bind-address = 127.0.0.1
+port = 3306
+socket = /tmp/mysql.sock
+innodb_file_per_table=1
+
+[mysqld_safe]
+timezone = '+0:00'
+
+
+$ mysql.server start/stop
+$mysql
+ERROR 1045 (28000): Access denied for user 'fashengl'@'localhost' (using password: NO)
+
+$ ps -A | grep mysql
+62957 ttys003    0:00.05 /bin/sh /usr/local/Cellar/mysql/5.7.21/bin/mysqld_safe --datadir=/usr/local/var/mysql --pid-file=/usr/local/var/mysql/c4b301c804d1.xxx
+63182 ttys003    0:00.36 /usr/local/Cellar/mysql/5.7.21/bin/mysqld --basedir=/usr/local/Cellar/mysql/5.7.21 --datadir=/usr/local/var/mysql --plugin-dir=/usr/local/Cellar/mysql/5.7.21/lib/plugin --log-error=c4b301c804d1.xxx.err --pid-file=/usr/local/var/mysql/c4b301c804d1.xxx.pid --socket=/tmp/mysql.sock --port=3306
+63192 ttys003    0:00.00 grep mysql
+
+
+$ /usr/local/Cellar/mysql/5.7.21/bin/mysqld_safe --skip-grant-tables
+$ mysql
+mysql> update mysql.user set authentication_string=password('root') where user='root';
+
+$ mysql -u root -p
+Password： type root here
+
+3. gradle clean && gradle fatJar
+
+4. java -jar build/libs/ConcretePage-all-1.0-SNAPSHOT.jar

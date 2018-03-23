@@ -1,0 +1,11 @@
+1. gradle clean && gradle build
+
+2. download tomcat and install.
+
+3. cp build/libs/SpringMVCExample-1.0.0-BUILD-SNAPSHOT.war ~/work/tomcat/apache-tomcat-8.5.28/webapps/
+
+4. go to tomcat root directory
+
+5. bin/startup.sh
+
+6. access  http://localhost:8080/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/login
