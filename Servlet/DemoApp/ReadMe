@@ -1,0 +1,9 @@
+This is a demo project which is used to practice Servlet/JSP.
+
+I just follow Youtube video: Servlet and JSP Tutorial for Beginners 2018
+
+This series of videos are easy to follow and I can start to try my idea quickly, thanks to the author :-)
+
+DemoApp is pure Servlet/JSP project, it needs the Servers project to run locally in my eclipse.
+
+So far I just use eclipse, Tomcat, Tomcat source code.
