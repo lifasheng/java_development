@@ -9,3 +9,10 @@ This ServletJSPMavenDemo is using Maven to manage the dependencies, it also need
 So far I just use eclipse, Tomcat, Tomcat source code, mysql.
 For how to install mysql locally, please refer to java_development/Spring/Spring4Hibernate4/ReadMe.
 
+
+Note that we should add Apache Tomcat to the Libraries directory:
+1. On left 'Project Explorer', select the project name: ServletJSPMavenDemo
+2. right click and select 'Properties'
+3. Choose 'Targeted Runtime', select 'Apache Tomcat v8.5'.
+
+Please check the video to see how to setup the Eclipse dev env and how to install Tomcat server and source code!
