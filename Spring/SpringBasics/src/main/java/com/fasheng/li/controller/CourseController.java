@@ -1,6 +1,8 @@
-package com.fasheng.li.course;
+package com.fasheng.li.controller;
 
-import com.fasheng.li.topic.Topic;
+import com.fasheng.li.model.Course;
+import com.fasheng.li.model.Topic;
+import com.fasheng.li.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -8,3 +8,10 @@ https://javabrains.io/topics/spring/  ---- Spring boot quick start.
 For hibernate stuff, followed these videos:
 https://www.youtube.com/watch?v=VpUp0QNJ-5M
 
+https://www.youtube.com/watch?v=OhgJmZEva7A
+
+
+For session factory, transaction manager, followed this wiki:
+https://stackoverflow.com/questions/30870146/transactional-annotation-not-working-in-spring-boot
+
+https://stackoverflow.com/questions/12337504/hibernatetransactionmanager-or-jpatransactionmanager/12337572

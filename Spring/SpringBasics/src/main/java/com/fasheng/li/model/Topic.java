@@ -1,14 +1,19 @@
-package com.fasheng.li.topic;
+package com.fasheng.li.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Topic {
 
-    @Id
+    @Id // primary key
+    @Column(name="id")
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="description")
     private String description;
 
     public Topic() {

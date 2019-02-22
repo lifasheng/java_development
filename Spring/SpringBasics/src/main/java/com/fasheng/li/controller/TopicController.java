@@ -1,5 +1,7 @@
-package com.fasheng.li.topic;
+package com.fasheng.li.controller;
 
+import com.fasheng.li.model.Topic;
+import com.fasheng.li.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
