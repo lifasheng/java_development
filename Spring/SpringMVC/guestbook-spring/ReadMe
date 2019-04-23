@@ -1,0 +1,39 @@
+1. Intellij Community version + Tomcat + Maven
+
+2. Source code is downloaded from https://www.objectdb.com/tutorial/jpa/intellij/spring/maven
+
+3. After downloaded, import to Intellij by following: File => New => Project from existing sources
+
+4. Following https://stefancosma.xyz/2018/10/01/how-to-use-tomcat-intellij-idea-community/ to setup tomcat:
+4.1 Tomcat Configuration
+
+    Make sure you install Tomcat in your mac, just download it and uncompressed it.
+    like download apache-tomcat-8.5.35-src.tar.gz, and uncompress it to:
+    /Users/xxx/Documents/servlet_software/apache-tomcat-8.5.35
+
+
+    After that, in mac, IntellijIDEA => Preferences => expand Tools and select External Tools
+
+    You can add a new tool with whatever name you want. I named mine as 'Tomcat'.
+    For tool settings, select the catalina.bat file, usually located in the bin folder of your Tomcat installation.
+    For example '~/Documents/servlet_software/apache-tomcat-8.5.35/bin/catalina.sh'
+
+    And last but not least set an argument with the command 'jpda run'.
+    The working directory should be set automatically.
+4.2 Start Tomcat
+    If you go to Tools -> External Tools and click on Tomcat, it should start the Tomcat server.
+
+4.3 Maven Build And Deploy To Tomcat
+    Now that you're done with the Tomcat configuration you want the ability to build
+    using Maven and deploy to the now working Tomcat server.
+
+    To achieve this you'll need to head over to Run -> Edit Configurations, click the "+" and select Maven.
+    Don't forget to name your new configuration, like 'deployMavenToTomcat'. Select your project location and add the following command line.
+
+    compile war:war org.codehaus.mojo:wagon-maven-plugin:upload-single -Dwagon.fromFile=/Users/xxx/work/java_development/Spring/SpringMVC/guestbook-spring/target/GuestBook.war -Dwagon.url=file:/Users/xxx/Documents/servlet_software/apache-tomcat-8.5.35/webapps
+    What this line does is that it builds the project, using Maven,
+    and then gets the file from the specified path (that's usually configured in your project) and copies it to the webapps folder in Tomcat.
+    Tomcat then knows it has a new version of the file and redeploys it.
+
+
+5.  http://localhost:8080/GuestBook/
