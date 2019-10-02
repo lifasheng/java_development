@@ -1,4 +1,4 @@
-
+// reference: https://dzone.com/articles/removing-duplicate-code-with-lambda-expressions
 
 class Exception1 extends Exception {
 
