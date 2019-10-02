@@ -51,8 +51,6 @@ class B {
     public int getNode(String entityId) {
         return mercuryClientInvocationTemplate.execute(aObj -> {
             return aObj.getNode(entityId);
-
-            //return apsMercuryClient.createStore(storeId, entityId);
         });
     }
 
