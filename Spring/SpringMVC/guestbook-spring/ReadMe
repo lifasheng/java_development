@@ -37,3 +37,26 @@
 
 
 5.  http://localhost:8080/GuestBook/
+
+6. Tomcat Remote Debug
+   To achieve this you'll need to add a new configuration like the previous step.
+   The only difference this time is that when you click "+" you'll need to select Remote.
+
+   Give your configuration a name. You'll need to set the Debugger mode to Attach to remote JVM,
+   the Transport to Socket, the Host to localhost and lastly the Port to 8000.
+   That way when you start the configuration, Intellij will connect via Socket to the Tomcat server that emits via port 8000.
+   You can change the port for Tomcat, to something else, in the Tomcat server.xml file, in the config folder.
+
+
+   Tomcat Remote Debug
+   Once the Tomcat server is started you can run this configuration. Just click on Run -> Debug
+   and then select the newly created configuration.
+
+   If you want to keep a record of all the logs when debugging,
+   you can achieve this by going to the Logs tabs in the newly created Remote configuration
+   and set the Save console output to file to the logs folder of your Tomcat installation.
+
+7. maven dependency for servlet 3.0 api
+   https://stackoverflow.com/questions/1979957/maven-dependency-for-servlet-3-0-api
+
+8. others
