@@ -46,4 +46,7 @@ This project is an sample maven project about how to integrate an AspectJ use in
 * Run 
 ```
 mvn clean package
+
+
+java -cp target/aspectJTest-1.0-SNAPSHOT-jar-with-dependencies.jar com.fs.aspectj.App
 ```
