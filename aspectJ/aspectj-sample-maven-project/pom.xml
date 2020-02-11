@@ -47,6 +47,8 @@
         <artifactId>aspectj-maven-plugin</artifactId>
         <version>1.10</version>
         <configuration>
+          <showWeaveInfo>true</showWeaveInfo>
+          <encoding>UTF-8</encoding>
           <source>1.8</source>
           <target>1.8</target>
           <complianceLevel>1.8</complianceLevel>
