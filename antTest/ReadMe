@@ -1,0 +1,18 @@
+This project is a test project that using ant to compile, test, etc.
+
+Please make sure you install Apache ant first.
+
+Basically, this test project is following ant manual https://ant.apache.org/manual/index.html.
+
+To import external libraries like log4j library to intellij, follow below steps:
+1. download the lib jar;
+2. move it to project libs/
+3. right click the jar file, and click 'Add to libraries'
+
+Run:
+
+ant
+
+or
+
+ant clean test

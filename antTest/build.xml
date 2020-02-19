@@ -1,0 +1,95 @@
+<project name="HelloWorld" basedir="." default="main">
+    <property name="src.dir"     value="src"/>
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/library"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+    <property name="test.src.dir" value="tst"/>
+    <property name="test.build.dir" value="${build.dir}/tests"/>
+    <property name="report.dir"  value="${test.build.dir}/testReport"/>
+    <property name="main-class"  value="com.ant.test.App"/>
+
+    <property name="lib.dir"     value="libs"/>
+    <path id="3rdPartyClasspath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <!-- this includes the preject itself's classes -->
+    <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <echo message="compile src classes ..."/>
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="3rdPartyClasspath"/>
+        <copy todir="${classes.dir}">
+            <fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="3rdPartyClasspath"/>
+                <path refid="application"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="test-compile" depends="compile">
+        <echo message="compile tst classes ..."/>
+        <mkdir dir="${test.build.dir}"/>
+        <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
+            <classpath>
+                <path refid="3rdPartyClasspath"/>
+                <path refid="application"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="test-compile">
+        <mkdir dir="${report.dir}"/>
+        <junit printsummary="yes" showoutput="yes">
+            <classpath>
+                <path refid="3rdPartyClasspath"/>
+                <path refid="application"/>
+                <!-- test class -->
+                <path location="${test.build.dir}" />
+            </classpath>
+
+            <!--
+            <test name="com.ant.test.AppTest" haltonfailure="no" todir="${report.dir}">
+                <formatter type="plain" />
+                <formatter type="xml"/>
+            </test>
+            -->
+            <batchtest fork="yes" haltonfailure="no" todir="${report.dir}">
+                <formatter type="plain"/>
+                <formatter type="xml"/>
+                <fileset dir="${test.src.dir}" includes="**/*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="report" depends="test">
+        <junitreport todir="${report.dir}">
+            <fileset dir="${report.dir}" includes="TEST-*.xml"/>
+            <report todir="${report.dir}"/>
+        </junitreport>
+    </target>
+
+    <target name="clean-build" depends="clean,jar"/>
+    <target name="main" depends="clean, run"/>
+
+</project>
