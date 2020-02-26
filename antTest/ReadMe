@@ -1,6 +1,10 @@
 This project is a test project that using ant to compile, test, etc.
 
 Please make sure you install Apache ant first.
+- How to Install Apache Ant: https://youtu.be/kEqv1PoOFc4
+
+Other references:
+- Ant core concept: https://youtu.be/8MhYLrtf_zY
 
 Basically, this test project is following ant manual https://ant.apache.org/manual/index.html.
 
